@@ -101,7 +101,7 @@ function stats(req, res)
       writeResult(res, {'error' : err});
     else
     {
-      con.query("SELECT * FROM GAME", function (err, result, fields) 
+      con.query("SELECT MIN(GAME_GUESSES) AS best, MAX(GAME_GUESSES) AS worst, COUNT(GAME_ID) AS gamesPlayed FROM GAME", function (err, result, fields) 
       {
         if (err) 
           writeResult(res, {'error' : err});
